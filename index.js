@@ -5,7 +5,7 @@ const port = 3000
 
 // Health check endpoint
 app.get("/", (req, res) => {
-  res.status(200).send("OK")
+  res.status(200).send("OOk")
 })
 
 // Time endpoint
