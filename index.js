@@ -1,8 +1,17 @@
-const express = require("express");
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
+
 const app = express();
 const PORT = process.env.PORT || 3000;
-const cors = require("cors");
-app.use(cors());
+const corsOrigin = process.env.CORS_ORIGIN;
+app.use(
+  cors(
+    corsOrigin
+      ? { origin: corsOrigin.split(",").map((s) => s.trim()) }
+      : undefined,
+  ),
+);
 
 // Middleware to log every API call
 app.use((req, res, next) => {
@@ -641,23 +650,21 @@ app.get("/api/auth", (req, res) => {
   });
 });
 
-
 // Health check endpoint
 app.get("/", (req, res) => {
-  res.status(200).send("OOk")
-})
+  res.status(200).send("OOk");
+});
 
 // Time endpoint
 app.get("/time", (req, res) => {
-  const currentTime = new Date().toISOString()
-  res.json({ time: currentTime })
-})
+  const currentTime = new Date().toISOString();
+  res.json({ time: currentTime });
+});
 
 // Envs endpoint
 app.get("/envs", (req, res) => {
-  res.json(process.env)
-})
-
+  res.json(process.env);
+});
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
