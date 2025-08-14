@@ -1,17 +1,10 @@
-import "dotenv/config";
-import express from "express";
 import cors from "cors";
+import express from "express";
 
 const app = express();
-const PORT = process.env.PORT || 3000;
-const corsOrigin = process.env.CORS_ORIGIN;
-app.use(
-  cors(
-    corsOrigin
-      ? { origin: corsOrigin.split(",").map((s) => s.trim()) }
-      : undefined,
-  ),
-);
+const PORT = 3000;
+
+app.use(cors());
 
 // Middleware to log every API call
 app.use((req, res, next) => {
