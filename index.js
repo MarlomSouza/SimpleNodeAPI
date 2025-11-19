@@ -16,7 +16,7 @@ app.use(express.json())
 
 // Health check endpoint
 app.get("/", (req, res) => {
-  res.status(200).send("Okay")
+  res.status(200).send("Okay2")
 })
 
 // Time endpoint
