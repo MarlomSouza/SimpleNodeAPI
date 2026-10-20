@@ -85,6 +85,22 @@ By default, the server runs on port `3000`. You can access it at [http://localho
 
 ---
 
+### 4. Static Ingress Test File
+
+- **Endpoint:** `GET /teste-ingress.js`
+- **Description:** Returns a small JavaScript file for testing Galaxy ingress redirects.
+
+After deploying to staging, test the normal file URL and then the URL with the container parameter:
+
+```text
+https://<app>.stg.galaxycloud-staging.app/teste-ingress.js
+https://<app>.stg.galaxycloud-staging.app/teste-ingress.js?_g_container_=undefined&v=123
+```
+
+The second request should respond with `303` and `Location: /teste-ingress.js?v=123`. Following that redirect should return `200` with the JavaScript file.
+
+---
+
 ## Example Usage
 
 Using `curl`:

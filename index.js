@@ -1,10 +1,12 @@
 import cors from "cors"
 import express from "express"
+import { fileURLToPath } from "node:url"
 
 const app = express()
 const PORT = 3000
 
 app.use(cors())
+app.use(express.static(fileURLToPath(new URL("./public", import.meta.url))))
 
 // Middleware to log every API call
 app.use((req, res, next) => {
