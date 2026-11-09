@@ -18,7 +18,7 @@ app.use(express.json())
 
 // Health check endpoint
 app.get("/", (req, res) => {
-  res.status(200).send("Commit feito22")
+  res.status(200).send("Can't deploy free app")
 })
 
 // Time endpoint
